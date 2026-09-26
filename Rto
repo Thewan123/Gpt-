@@ -1,0 +1,16 @@
+local Players = game:GetService("Players")
+
+local function makeGod(character)
+	local humanoid = character:WaitForChild("Humanoid")
+
+	humanoid.MaxHealth = math.huge
+	humanoid.Health = math.huge
+
+	local forceField = Instance.new("ForceField")
+	forceField.Visible = false
+	forceField.Parent = character
+end
+
+Players.PlayerAdded:Connect(function(player)
+	player.CharacterAdded:Connect(makeGod)
+end)
